@@ -1,5 +1,13 @@
 <?php
-require_once 'solution.php';
+include 'IElectronicPart.php';
+include 'ElectronicPart.php';
+include 'Keyboard.php';
+include 'Mouse.php';
+include 'screen.php';
+include 'Computer.php';
+// include 'ElectronicPart.php';
+require_once 'purchase.php';
+
 
 $screen1 = new Screen('Samsung', 723, 'S24F350FH', 'PLS', 24);
 $screen2 = new Screen('Samsung', 620, 'S22F350FH', 'TN', 21.5);
