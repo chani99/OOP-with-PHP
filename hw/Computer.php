@@ -54,6 +54,35 @@ class Computer extends ElectronicPart implements IElectronicPart   {
                  "ram: ". $this->receive_ram(). "</br>" .
                  "graphic card: ". $this->receive_graphiccard();
      }
+
+         function insert(){
+            $host = '127.0.0.1';
+            $db   = 'northwind';
+            $user = 'root';
+            $pass = '';
+            $charset = 'utf8';
+
+            $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+            $opt = [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
+            ];
+            $pdo = new PDO($dsn, $user, $pass, $opt);
+
+            $statement = $pdo->prepare("INSERT INTO l40_computers(graphic_card, hard_drive, manufacturer, model,motherboard,price,ram)
+                VALUES(:graphic_card, :hard_drive, :manufacturer, :model, :motherboard, :price, :ram)");
+            $statement->execute(array(
+                "graphic_card" => $this->graphicCard,
+                "hard_drive" => $this->hardDrive,
+                "manufacturer"=> ElectronicPart::receive_manufacturer(),
+                "model"=> ElectronicPart::receive_model(),
+                "motherboard" => $this->motherboard,
+                "price"=> ElectronicPart::receive_price(),
+                "ram" => $this->ram));
+
+     }
+ 
  
 
 }
