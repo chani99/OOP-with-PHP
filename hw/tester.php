@@ -66,24 +66,24 @@ echo $pur3->getFullPurchaseDetails();
 echo $pur4->getFullPurchaseDetails();
 
 
-$screen1->insert();
-$screen2->insert();
-$screen3->insert();
-$screen4->insert();
+// $screen1->insert();
+// $screen2->insert();
+// $screen3->insert();
+// $screen4->insert();
 
-$keyboard1->insert();
-$keyboard2->insert();
-$keyboard3->insert();
-$keyboard4->insert();
+// $keyboard1->insert();
+// $keyboard2->insert();
+// $keyboard3->insert();
+// $keyboard4->insert();
 
-$mouse1->insert();
-$mouse2->insert();
-$mouse3->insert();
-$mouse4->insert();
+// $mouse1->insert();
+// $mouse2->insert();
+// $mouse3->insert();
+// $mouse4->insert();
 
-$computer1->insert();
-$computer2->insert();
-$computer3->insert();
+// $computer1->insert();
+// $computer2->insert();
+// $computer3->insert();
 
 
 

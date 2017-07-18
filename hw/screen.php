@@ -10,33 +10,34 @@ class screen extends ElectronicPart implements IElectronicPart   {
 
 
         public function __construct($manufacturer,$price,$model,$size,$panel){
+                $this->manufacturer =$manufacturer;
+                $this->price =$price;
+                $this->model =$model;
                 $this->size = $size;
                 $this->panel = $panel;
-                parent::__construct( $manufacturer, $price, $model); 
+                // parent::__construct( $manufacturer, $price, $model); 
 
         }
 
-        function receive_className(){
-        return $this->Class_name;
-        }
+        // function receive_className(){
+        // return $this->Class_name;
+        // }
 
-        function receive_size(){
-        return $this->size;
-        }
+        // function receive_size(){
+        // return $this->size;
+        // }
 
-        function receive_panel(){
-        return $this->panel;
-        }
+        // function receive_panel(){
+        // return $this->panel;
+        // }
 
 
       function getSpecs(){
-          return "class name: " . $this->receive_className() . 
-                 ", manufacturer: ". ElectronicPart::receive_manufacturer() .
-                 ", price: ". ElectronicPart::receive_price().
-                 ", model: ". ElectronicPart::receive_model().
-                 ", size: ". $this->receive_size().
-                 ", panel: ". $this->receive_panel()
-                 ;
+                return "Screen class: </br>
+                  manufacturer: ". $this->manufacturer . "</br>" .
+                 "price: ". $this->price . "</br>" .
+                 "model: ". $this->model;
+
      }
 
      function insert(){
@@ -57,13 +58,13 @@ class screen extends ElectronicPart implements IElectronicPart   {
             $statement = $pdo->prepare("INSERT INTO l40_screens(manufacturer, price, model,size)
                 VALUES(:manufacturer, :model, :price, :size)");
             $statement->execute(array(
-                 "manufacturer"=> $this->receive_manufacturer(),
-                 "price"=> ElectronicPart::receive_price(),
-                 "model"=> ElectronicPart::receive_model(),
+                "manufacturer"=> $this->manufacturer,
+                "price"=> $this->price,
+                "model"=> $this->model,
                 "size" => $this->size,));
 
      }
- 
+
 
 }
 //  $myScreen = new screen('intel', 500, 'Z250','20"', 'aaa');

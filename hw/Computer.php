@@ -14,45 +14,48 @@ class Computer extends ElectronicPart implements IElectronicPart   {
 
 
         public function __construct($manufacturer,$price, $model,$motherboard, $processor, $hardDrive, $ram, $graphicCard){
+                $this->manufacturer =$manufacturer;
+                $this->price =$price;
+                $this->model =$model;
                 $this->motherboard = $motherboard;
                 $this->processor = $processor;
                 $this->hardDrive = $hardDrive;
                 $this->ram = $ram;
                 $this->graphicCard = $graphicCard;
-                parent::__construct( $manufacturer, $price, $model); 
+                // parent::__construct( $manufacturer, $price, $model); 
 
         }
 
-        function receive_className(){
-        return $this->Class_name;
-        }
-        function receive_motherboard(){
-        return $this->motherboard;
-        }
-        function receive_processor(){
-        return $this->processor;
-        }
-        function receive_hardDraive(){
-        return $this->hardDrive;
-        }
-        function receive_ram(){
-        return $this->ram;
-        }
-        function receive_graphiccard(){
-        return $this->graphicCard;
-        }
+        // function receive_className(){
+        // return $this->Class_name;
+        // }
+        // function receive_motherboard(){
+        // return $this->motherboard;
+        // }
+        // function receive_processor(){
+        // return $this->processor;
+        // }
+        // function receive_hardDraive(){
+        // return $this->hardDrive;
+        // }
+        // function receive_ram(){
+        // return $this->ram;
+        // }
+        // function receive_graphiccard(){
+        // return $this->graphicCard;
+        // }
 
 
       function getSpecs(){
-          return "class name: " . $this->receive_className() . "</br>" .
-                 "manufacturer: ". ElectronicPart::receive_manufacturer() . "</br>" .
-                 "price: ". ElectronicPart::receive_price(). "</br>" .
-                 "model: ". ElectronicPart::receive_model(). "</br>" .
-                 "mother-board: ". $this->receive_motherboard(). "</br>" .
-                 "processor: ". $this->receive_processor(). "</br>" .
-                 "hard driver: ". $this->receive_hardDraive(). "</br>" .
-                 "ram: ". $this->receive_ram(). "</br>" .
-                 "graphic card: ". $this->receive_graphiccard();
+   return "Computer class: </br>
+                  manufacturer: ". $this->manufacturer . "</br>" .
+                 "price: ". $this->price . "</br>" .
+                 "model: ". $this->model;
+               //  "mother-board: ". $this->motherboard . "</br>" .
+                //  "processor: ". $this->processor . "</br>" .
+                //  "hard driver: ". $this->hardDrive. "</br>" .
+                //  "ram: ". $this->ram. "</br>" .
+                //  "graphic card: ". $this->graphiccard;
      }
 
          function insert(){
@@ -70,16 +73,16 @@ class Computer extends ElectronicPart implements IElectronicPart   {
             ];
             $pdo = new PDO($dsn, $user, $pass, $opt);
 
-            $statement = $pdo->prepare("INSERT INTO l40_computers(graphic_card, hard_drive, manufacturer, model,motherboard,price,ram)
-                VALUES(:graphic_card, :hard_drive, :manufacturer, :model, :motherboard, :price, :ram)");
+            $statement = $pdo->prepare("INSERT INTO l40_computers( manufacturer, price, model, motherboard, hard_drive,ram,  graphic_card)
+                VALUES(:manufacturer, :price, :model, :motherboard, :hard_drive,  :ram,  :graphic_card)");
             $statement->execute(array(
-                "graphic_card" => $this->graphicCard,
-                "hard_drive" => $this->hardDrive,
-                "manufacturer"=> ElectronicPart::receive_manufacturer(),
-                "model"=> ElectronicPart::receive_model(),
+                "manufacturer"=> $this->manufacturer,
+                "price"=> $this->price,
+                "model"=> $this->model,
                 "motherboard" => $this->motherboard,
-                "price"=> ElectronicPart::receive_price(),
-                "ram" => $this->ram));
+                "hard_drive" => $this->hardDrive,
+                "ram" => $this->ram,
+                "graphic_card" => $this->graphicCard));
 
      }
  
